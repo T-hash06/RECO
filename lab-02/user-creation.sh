@@ -1,5 +1,9 @@
 #!/bin/sh
 
+clear_screen() {
+    clear
+}
+
 newuser() {
     username=$1
     group=$2
@@ -15,11 +19,16 @@ newuser() {
         groupadd "$group"
     fi
 
+    if [ ! -d "/home/$home_dir" ]; then
+        echo "Home directory /home/$home_dir does not exist. Creating it now."
+        mkdir -p "/home/$home_dir"
+    fi
+
     echo "Creating user: $username"
-    useradd -m -d "$home_dir" -s "$shell" -c "$full_name" -g "$group" "$username"
+    useradd -m -d "/home/$home_dir" -s "$shell" -c "$full_name" -g "$group" "$username"
     
-    echo "Setting permissions for $home_dir"
-    chmod "$perm_home" "$home_dir"
+    echo "Setting permissions for /home$home_dir"
+    chmod "$perm_home" "/home$home_dir"
     chmod "$perm_group" "/home/$username"
     chmod "$perm_other" "/home/$username"
     
@@ -38,6 +47,8 @@ newgroup() {
 # Example usage
 # newuser alice developers "Alice Developer" /home/alice /bin/bash 700 770 755
 # newgroup developers 1001
+
+clear_screen
 
 echo "Select an option:"
 echo "1. Create a new user"
