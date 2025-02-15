@@ -8,10 +8,10 @@ show_last_15_lines() {
   echo "Showing the last 15 lines of 3 log files that contain general system activity data..."
   echo -e "\n/var/log/syslog\n"
   tail -n 15 /var/log/syslog
-  echo -e "\n/var/log/auth.log\n"
-  tail -n 15 /var/log/auth.log
-  echo -e "\n/var/log/kern.log\n"
-  tail -n 15 /var/log/kern.log
+  echo -e "\n/var/log/cron\n"
+  tail -n 15 /var/log/cron
+  echo -e "\n/var/log/dmesg\n"
+  tail -n 15 /var/log/dmesg
 }
 
 show_lines_containing_word() {
@@ -19,10 +19,10 @@ show_lines_containing_word() {
   read -p "Enter the word to filter: " word
   echo -e "\n/var/log/syslog\n"
   tail -n 15 /var/log/syslog | grep "$word"
-  echo -e "\n/var/log/auth.log\n"
-  tail -n 15 /var/log/auth.log | grep "$word"
-  echo -e "\n/var/log/kern.log\n"
-  tail -n 15 /var/log/kern.log | grep "$word"
+  echo -e "\n/var/log/cron\n"
+  tail -n 15 /var/log/cron | grep "$word"
+  echo -e "\n/var/log/dmesg\n"
+  tail -n 15 /var/log/dmesg | grep "$word"
 }
 
 while true; do
