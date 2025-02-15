@@ -27,10 +27,8 @@ newuser() {
     echo "Creating user: $username"
     useradd -m -d "/home/$home_dir" -s "$shell" -c "$full_name" -g "$group" "$username"
     
-    echo "Setting permissions for /home$home_dir"
-    chmod "$perm_home" "/home$home_dir"
-    chmod "$perm_group" "/home/$username"
-    chmod "$perm_other" "/home/$username"
+    echo "Setting permissions for home directory /home/$home_dir"
+    chmod "$perm_home" "/home/$home_dir"
     
     echo "User $username created successfully."
 }
