@@ -7,9 +7,9 @@ clear_screen() {
 show_last_15_lines() {
   echo "Showing the last 15 lines of 3 log files that contain general system activity data..."
   echo -e "\n/var/log/syslog\n"
-  result=$(tail -n 15 /var/log/syslog)
-  result="$result\n$(tail -n 15 /var/log/cron)"
-  result="$result\n$(tail -n 15 /var/log/dmesg)"
+  result="=== /var/log/syslog ===\n\n$(tail -n 15 /var/log/syslog)"
+  result="$result\n\n=== /var/log/cron ===\n\n$(tail -n 15 /var/log/cron)"
+  result="$result\n\n=== /var/log/dmesg ===\n\n$(tail -n 15 /var/log/dmesg)"
   echo -e "$result" | less
 }
 
@@ -17,9 +17,9 @@ show_lines_containing_word() {
   echo "Filtering the last 15 lines of 3 log files to display only those containing a specific word..."
   read -p "Enter the word to filter: " word
   echo -e "\n/var/log/syslog\n"
-  result=$(tail -n 15 /var/log/syslog | grep "$word")
-  result="$result\n$(tail -n 15 /var/log/cron | grep "$word")"
-  result="$result\n$(tail -n 15 /var/log/dmesg | grep "$word")"
+  result="=== /var/log/syslog ===\n\n$(tail -n 15 /var/log/syslog | grep "$word")"
+  result="$result\n\n=== /var/log/cron ===\n\n$(tail -n 15 /var/log/cron | grep "$word")"
+  result="$result\n\n=== /var/log/dmesg ===\n\n$(tail -n 15 /var/log/dmesg | grep "$word")"
   echo -e "$result" | less
 }
 
