@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 clear_screen() {
   clear
